@@ -61,4 +61,4 @@ function drawDashboard() {
 
     // Draw the dashboard.
     dashboard.draw(data);
-  }
+  
