@@ -1,17 +1,7 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html>
+
 <head>
-
-    <title>Google chart</title>
-        <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-     <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
         <div class="container"> 
                 <!-- Relative URLs -->
                 <a href="../index.html">Project 2</a>
@@ -36,12 +26,58 @@
                 <a href="../graph19/index.html">Graph 19</a>
                 <a href="../graph20/index.html">Graph 20</a>
 
-                
 
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <div id="chart_div"></div>
+<script>
 
+window.onload = function () {
 
-       <script  src="js/index.js"></script>
+var dps = []; // dataPoints    https://canvasjs.com/html5-javascript-dynamic-chart/
+var chart = new CanvasJS.Chart("chartContainer", {
+	title :{
+		text: "Dynamic Data"
+	},
+	axisY: {
+		includeZero: false
+	},
+	data: [{
+		type: "line",
+		dataPoints: dps
+	}]
+});
+
+var xVal = 0;
+var yVal = 100;
+var updateInterval = 1000;
+var dataLength = 20; // number of dataPoints visible at any point
+
+var updateChart = function (count) {
+
+	count = count || 1;
+
+	for (var j = 0; j < count; j++) {
+		yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+		dps.push({
+			x: xVal,
+			y: yVal
+		});
+		xVal++;
+	}
+
+	if (dps.length > dataLength) {
+		dps.shift();
+	}
+
+	chart.render();
+};
+
+updateChart(dataLength);
+setInterval(function(){updateChart()}, updateInterval);
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>
