@@ -1,0 +1,63 @@
+const CHART = {};
+
+CHART.load = (sheetData) => {
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', {'packages':['corechart']});
+
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.charts.setOnLoadCallback(drawChart);
+
+  // Callback that creates and populates a data table,
+  // instantiates the pie chart, passes in the data and
+  // draws it.
+  function drawChart() {
+
+    // Create the data table.
+    const data = new google.visualization.DataTable();
+    data.addColumn('string', 'City');
+    data.addColumn('number', 'Attendance');
+    data.addRows(sheetData);
+
+    // Set chart options
+    const options = {
+                    'title': 'Women\'s March Attendance by City',
+                    'width': 750,
+                    'height': 500
+                  };
+
+    // Instantiate and draw our chart, passing in some options.
+    const chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+
+}
+
+
+const SHEET = {};
+
+const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/185EbxGklql1wZgoTjwYPsth0RcmoqmutP2DKddqIKnY/pubhtml';
+
+SHEET.load = (data, tabletop) => {
+  let arrayOfData = [];
+
+  data.forEach((item) => {
+    let attendance = parseInt(item.Attendance, 10) * 1000;
+    arrayOfData.push([item.City, attendance]);
+  });
+
+  // Sort cities by name
+  let sortArrayOfData = arrayOfData.sort();
+
+  // Load the data into Google Charts
+  CHART.load(sortArrayOfData);
+}
+
+SHEET.init = (url) => {
+  Tabletop.init({
+    key: url,
+    callback: SHEET.load,
+    simpleSheet: true
+  })
+}
+
+window.addEventListener('DOMContentLoaded', SHEET.init(publicSpreadsheetUrl));

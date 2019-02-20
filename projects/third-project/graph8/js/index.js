@@ -16,5 +16,8 @@ function drawDashboard(response) {
   var data = response.getDataTable();
   var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
   chart.draw(data, { height: 400 });
+
+    // below event listener to dynamically re-size as screen size changes
+window.addEventListener('resize', initialize, false);
 }
 

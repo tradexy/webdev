@@ -1,66 +1,57 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en" >
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <title>Google Charts w/ Tabletop.js</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-
-  <title>Graph 1</title>
+  
+  
+  
 </head>
 
 <body>
+        <!-- Relative URLs -->
+        <a href="../index.html">Project 3</a>
+        <a href="../graph1/index.html">Graph 1</a>
+        <a href="../graph2/index.html">Graph 2</a>
+        <a href="../graph3/index.html">Graph 3</a>
+        <a href="../graph4/index.html">Graph 4</a>
+        <a href="../graph5/index.html">Graph 5</a>
+        <a href="../graph6/index.html">Graph 6</a>
+        <a href="../graph7/index.html">Graph 7</a>
+        <a href="../graph8/index.html">Graph 8</a>
+        <a href="../graph9/index.html">Graph 9</a>
+        <a href="../graph10/index.html">Graph 10</a>
+        <a href="../graph11/index.html">Graph 11</a>
+        <a href="../graph12/index.html">Graph 12</a>
+        <a href="../graph13/index.html">Graph 13</a>
+        <a href="../graph14/index.html">Graph 14</a>
+        <a href="../graph15/index.html">Graph 15</a>
+        <a href="../graph16/index.html">Graph 16</a>
+        <a href="../graph17/index.html">Graph 17</a>
+        <a href="../graph18/index.html">Graph 18</a>
+        <a href="../graph19/index.html">Graph 19</a>
+        <a href="../graph20/index.html">Graph 20</a>
+      
+  <p>This chart needs to be updated with https://docs.google.com/spreadsheets/d/18wqZWvxxoJi8jlsfyWkmNFpZezs4w7_7jH2OzV7Hhxs/edit#gid=0
+    <br> Sheets as html resulting in https://docs.google.com/spreadsheets/d/e/2PACX-1vQdF_J54unA6AZA5d5VnqBZCGQpixaEigybF3YCW-OCDhtZAhDvOattNeUA5UMKIkE-NEMuOidd822-/pubhtml
+    <br> TO BE UPDATED....
+  </p>
 
-  <div class="container"> 
-  <!-- Relative URLs -->
-  <a href="../index.html">Project 2</a>
-  <a href="../graph1/index.html">Graph 1</a>
-  <a href="../graph2/index.html">Graph 2</a>
-  <a href="../graph3/index.html">Graph 3</a>
-  <a href="../graph4/index.html">Graph 4</a>
-  <a href="../graph5/index.html">Graph 5</a>
-  <a href="../graph6/index.html">Graph 6</a>
-  <a href="../graph7/index.html">Graph 7</a>
-  <a href="../graph8/index.html">Graph 8</a>
-  <a href="../graph9/index.html">Graph 9</a>
-  <a href="../graph10/index.html">Graph 10</a>
-  <a href="../graph11/index.html">Graph 11</a>
-  <a href="../graph12/index.html">Graph 12</a>
-  <a href="../graph13/index.html">Graph 13</a>
-  <a href="../graph14/index.html">Graph 14</a>
-  <a href="../graph15/index.html">Graph 15</a>
-  <a href="../graph16/index.html">Graph 16</a>
-  <a href="../graph17/index.html">Graph 17</a>
-  <a href="../graph18/index.html">Graph 18</a>
-  <a href="../graph19/index.html">Graph 19</a>
-  <a href="../graph20/index.html">Graph 20</a>
-
-
-
-
-  
-    <h2>Charts and text (from chart) displayed on page</h2>
-    <hr>
-    <p>This page put together on 18th May 2018 (asam), taking charts & text (chart) from Google sheets.</p>
- 
-    </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=657923115&amp;format=interactive" style="border:none"; width = 900 height=500 ></iframe>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=942882971&amp;format=interactive" style="border:none"; width = 900 height=500 ></iframe>
-    <br>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=672082080&amp;format=interactive" style="border:none"; width = 900 height=400 ></iframe>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=1499207801&amp;format=interactive" style="border:none"; width = 900 height = 200></iframe>
+  <div id="chart_div">Loading chart&hellip;</div>
+  <script src='https://www.gstatic.com/charts/loader.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
 
   
 
+    <script  src="js/index.js"></script>
 
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
 </body>
 
 </html>
