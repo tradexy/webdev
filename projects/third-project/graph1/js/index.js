@@ -35,7 +35,7 @@ CHART.load = function (sheetData) {
 
 var SHEET = {};
 // my spreadsheet does not work https://docs.google.com/spreadsheets/d/18wqZWvxxoJi8jlsfyWkmNFpZezs4w7_7jH2OzV7Hhxs/edit#gid=0
-//original spreadshet being used below, also in index.babel (a problem with my copy, see in console)
+//var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/2PACX-1vQdF_J54unA6AZA5d5VnqBZCGQpixaEigybF3YCW/pubhtml';
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/185EbxGklql1wZgoTjwYPsth0RcmoqmutP2DKddqIKnY/pubhtml';
 
 SHEET.load = function (data, tabletop) {

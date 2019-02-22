@@ -90,4 +90,7 @@ function drawChart() {
       colors: colors
     }
   );
+// below event listener to dynamically re-size as screen size changes
+  window.addEventListener('resize', drawChart, false);
 };
+
