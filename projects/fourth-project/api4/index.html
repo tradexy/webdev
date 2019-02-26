@@ -35,7 +35,14 @@
   
 <header>
 <h1>JSON and AJAX</h1>
-  <button id="btn">Fetch Info from JSON online source</button>
+  <button id="btn">Get request online with LIVE values</button>
+  <p>Using a json file that contains <strong>live</strong> FX values:
+    btn.addEventListener("click", function() {
+   <br> var ourRequest = new XMLHttpRequest();
+   <br> ourRequest.open('Get', 'https://forex.1forge.com/1.0.3/quotes?pairs=EURUSD,USDGBP,USDCNH,USDJPY,USDEUR&api_key');
+  </p>
+  <p>Have also added CSS to improve the look of the page</p>
+  <p></p>
 </header>
 
 <div id="JJMdata"></div>

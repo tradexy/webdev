@@ -22,7 +22,7 @@ html, body {
   }
   
   button {
-    background-color: #c9c75e;
+    background-color: #153a0c;
     color: #FFF;
     border: none;
     padding: 10px 15px;
@@ -39,11 +39,11 @@ html, body {
   }
   
   button:hover {
-    background-color: rgb(63, 180, 39);
+    background-color: rgb(48, 39, 180);
   }
   
   button:active {
-    background-color: #bd3bb6;
+    background-color: #b6c571;
     box-shadow: none;
     position: relative;
     top: -8px;
