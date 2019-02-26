@@ -1,0 +1,7 @@
+[{"name":"This is JSON, ","language":"use text or numbers: ",
+    "age":1234,"glasses":" with standard ","day":"format."},
+    
+    {"name":"ali ","language":"html ","age":107,"glasses":" yes ","day":"Tuesday"},
+    {"name":"ben ","language":"css ","age":67,"glasses":" no ","day":"Thursday"},
+    {"name":"cai ","language":"js ","age":27,"glasses":" no ","day":"Friday"},
+    {"name":"dee ","language":"python ","age":7,"glasses":" yes ","day":"Sunday"}]
