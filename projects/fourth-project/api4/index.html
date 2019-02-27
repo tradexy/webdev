@@ -2,9 +2,8 @@
 <html>
 <head>
   <meta name="viewport" content="width=devide-width, initial-scale=l" />
-  <title>JSON and AJAX</title>
-  <link rel="stylesheet" href="styles.css">
-
+  <title>JSON</title>
+ 
 
   <div class="container"> 
     <!-- Relative URLs -->
@@ -34,15 +33,24 @@
 <body>
   
 <header>
-<h1>JSON and AJAX</h1>
-  <button id="btn">Get request online with LIVE values</button>
-  <p>Using a json file that contains <strong>live</strong> FX values:
-    btn.addEventListener("click", function() {
-   <br> var ourRequest = new XMLHttpRequest();
-   <br> ourRequest.open('Get', 'https://forex.1forge.com/1.0.3/quotes?pairs=EURUSD,USDGBP,USDCNH,USDJPY,USDEUR&api_key');
-  </p>
-  <p>Have also added CSS to improve the look of the page</p>
-  <p></p>
+<h2>JSON</h2>
+<p>Adding event listener:
+  <br>btn.addEventListener("click", function() {
+    <br>var ourRequest = new XMLHttpRequest();
+    <br>ourRequest.open('Get', 'json.json');
+</p>
+<p>When the button below is pressed the json data is called from
+ a json file saved within the folder, the file contains:</p>
+ <p>[{"name":"This is JSON, ","language":"use text or numbers: ",
+  "age":1234,"glasses":" with standard ","day":"format."},
+  
+  <br>{"name":"ali ","language":"html ","age":107,"glasses":" yes ","day":"Tuesday"},
+  <br>{"name":"ben ","language":"css ","age":67,"glasses":" no ","day":"Thursday"},
+  <br>{"name":"cai ","language":"js ","age":27,"glasses":" no ","day":"Friday"},
+  <br>{"name":"dee ","language":"python ","age":7,"glasses":" yes ","day":"Sunday"}]
+  
+</p><br>
+  <button id="btn">Get request from .json file</button>
 </header>
 
 <div id="JJMdata"></div>

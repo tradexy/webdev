@@ -3,7 +3,7 @@
 <head>
   <meta name="viewport" content="width=devide-width, initial-scale=l" />
   <title>JSON and AJAX</title>
-  <link rel="stylesheet" href="styles.css">
+ 
 
 
   <div class="container"> 
@@ -34,8 +34,22 @@
 <body>
   
 <header>
-<h1>JSON and AJAX</h1>
-  <button id="btn">Fetch Info from JSON online source</button>
+<h2>JSON and AJAX</h2>
+<p>ourRequest.open('Get', 'https://raw.githubusercontent.com/tradexy/api/master/fx25feb19.json');
+  <br>Adding text to describe eah of the data points: for (i = 0; i < data.length; i++) {</data.length> htmlString += "<p>" + data[i].symbol
+   <br>    + " bid is " + data[i].bid + " ask is " + data[i].ask 
+   <br>   + " price is " + data[i].price + " taken at " + data[i].timestamp + ". </p>
+
+<p>json file saved online, <a href="https://raw.githubusercontent.com/tradexy/api/master/fx25feb19.json">see the json file.</a>
+</P>
+ <p>[{"symbol":"EURTEST","bid":1.11111,"ask":1.11111,"price":1.13574,"timestamp":1551097505},
+<br>{"symbol":"TESTGBP","bid":0.764719,"ask":0.764731,"price":0.764725,"timestamp":1551097505},
+<br>{"symbol":"TESTCNH","bid":6.6835,"ask":6.68369,"price":6.6836,"timestamp":1551097505},
+<br>{"symbol":"TESTJPY","bid":110.736,"ask":110.737,"price":110.7365,"timestamp":1551097505},
+<br>{"symbol":"TESTEUR","bid":0.880483,"ask":0.880483,"price":0.880483,"timestamp":1551097505}]
+</p><br>
+
+  <button id="btn">Get request from online static file</button>
 </header>
 
 <div id="JJMdata"></div>
