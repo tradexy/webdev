@@ -1,70 +1,95 @@
-
-google.charts.load('current', {'packages':['corechart', 'controls']});
-google.charts.setOnLoadCallback(initialize);
-
-
-
-function initialize() {
-  var queryString = encodeURIComponent('SELECT B, C, O LIMIT 13 OFFSET 13');
-  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1wx9d-9z9R4IS3CwQ-lNDTCTuhHsVSuwz4SNp1J0v4YQ/gviz/tq?sheet=ASDRiNAV&headers=1&tq=' + queryString);
-  query.send(drawDashboard);
-}
-function drawDashboard(response) {
-  if (response.isError()) {
-    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-    return;
-  }
-  var data = response.getDataTable();
-  var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-  chart.draw(data, { height: 400 });
-}
-
-
-/*
-google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(initialize);
-
-
-
-function initialize() {
+google.charts.load('current', {
+    callback: function () {
       var data = new google.visualization.DataTable();
-      data.addColumn('number', 'X');
-      data.addColumn('number', 'Dogs');
-      data.addColumn('number', 'Cats');
+      data.addColumn('date', 'Date');
+      data.addColumn('number', 'SDR');
+      data.addColumn('number', 'Crypto8');
+  
+      data.addRow([new Date('04/01/2019'), 3, 3]);
+      data.addRow([new Date('04/02/2019'), 4, 6]);
+      data.addRow([new Date('04/03/2019'), 3, 4]);
+      data.addRow([new Date('04/04/2019'), 3, 4]);
+      data.addRow([new Date('04/05/2019'), 2, 3]);
+      data.addRow([new Date('04/06/2019'), 4, 3]);
+      data.addRow([new Date('04/07/2019'), 4, 2]);
+      data.addRow([new Date('04/08/2019'), 3, 2]);
+      data.addRow([new Date('04/09/2019'), 4, 3]);
+      data.addRow([new Date('04/10/2019'), 5, 1]);
+      data.addRow([new Date('04/11/2019'), 5, 2]);
+      data.addRow([new Date('04/12/2019'), 3, 2]);
+      data.addRow([new Date('04/13/2019'), 4, 4]);
+      data.addRow([new Date('04/14/2019'), 4, 4]);
+      data.addRow([new Date('04/15/2019'), 3, 3]);
+      data.addRow([new Date('04/16/2019'), 4, 5]);
+      data.addRow([new Date('04/17/2019'), 3, 4]);
+      data.addRow([new Date('04/18/2019'), 3, 4]);
+      data.addRow([new Date('04/19/2019'), 2, 3]);
+      data.addRow([new Date('04/20/2019'), 4, 3]);
+      data.addRow([new Date('04/21/2019'), 4, 2]);
+      data.addRow([new Date('04/22/2019'), 3, 2]);
+      data.addRow([new Date('04/23/2019'), 4, 3]);
+      data.addRow([new Date('04/24/2019'), 5, 1]);
+      data.addRow([new Date('04/25/2019'), 5, 2]);
+      data.addRow([new Date('04/26/2019'), 3, 2]);
+      data.addRow([new Date('04/27/2019'), 4, 4]);
+      data.addRow([new Date('04/28/2019'), 4, 4]);
+      data.addRow([new Date('04/29/2019'), 2, 3]);
+      data.addRow([new Date('04/30/2019'), 4, 3]);
 
-      data.addRows([
-        [0, 0, 0],    [1, 10, 5],   [2, 23, 15],  [3, 17, 9],   [4, 18, 10],  [5, 9, 5],
-        [6, 11, 3],   [7, 27, 19],  [8, 33, 25],  [9, 40, 32],  [10, 32, 24], [11, 35, 27],
-        [12, 30, 22], [13, 40, 32], [14, 42, 34], [15, 47, 39], [16, 44, 36], [17, 48, 40],
-        [18, 52, 44], [19, 54, 46], [20, 42, 34], [21, 55, 47], [22, 56, 48], [23, 57, 49],
-        [24, 60, 52], [25, 50, 42], [26, 52, 44], [27, 51, 43], [28, 49, 41], [29, 53, 45],
-        [30, 55, 47], [31, 60, 52], [32, 61, 53], [33, 59, 51], [34, 62, 54], [35, 65, 57],
-        [36, 62, 54], [37, 58, 50], [38, 55, 47], [39, 61, 53], [40, 64, 56], [41, 65, 57],
-        [42, 63, 55], [43, 66, 58], [44, 67, 59], [45, 69, 61], [46, 69, 61], [47, 70, 62],
-        [48, 72, 64], [49, 68, 60], [50, 66, 58], [51, 65, 57], [52, 67, 59], [53, 70, 62],
-        [54, 71, 63], [55, 72, 64], [56, 73, 65], [57, 75, 67], [58, 70, 62], [59, 68, 60],
-        [60, 64, 56], [61, 60, 52], [62, 65, 57], [63, 67, 59], [64, 68, 60], [65, 69, 61],
-        [66, 70, 62], [67, 72, 64], [68, 75, 67], [69, 80, 72]
-      ]);
-
-      var options = {
-        hAxis: {
-          title: 'Time'
-        },
-        vAxis: {
-          title: 'Popularity'
-        },
-        colors: ['#a52714', '#097138'],
-        crosshair: {
-          color: '#000',
-          trigger: 'selection'
+  
+      var dataOther = new google.visualization.DataTable();
+      dataOther.addColumn('date', 'Date');
+      dataOther.addColumn('number', 'S&P 500');
+      dataOther.addColumn('number', 'MSCI World');
+      dataOther.addColumn('number', 'DAX');
+      dataOther.addColumn('number', 'Bitcoin');
+  
+      dataOther.addRow([new Date('04/01/2001'), 1, 8, 5, 2]);
+      dataOther.addRow([new Date('04/02/2001'), 2, 9, 6, 3]);
+      dataOther.addRow([new Date('04/03/2001'), 3, 0, 7, 4]);
+      dataOther.addRow([new Date('04/04/2001'), 4, 1, 8, 5]);
+      dataOther.addRow([new Date('04/05/2001'), 5, 2, 9, 6]);
+      dataOther.addRow([new Date('04/06/2001'), 6, 3, 0, 7]);
+      dataOther.addRow([new Date('04/07/2001'), 7, 4, 1, 8]);
+  
+      var chart = new google.visualization.ChartWrapper({
+        chartType: 'LineChart',
+        containerId: 'daily_container_count_lineChart',
+        options: {
+          theme: 'maximized'
         }
-      };
-
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-      chart.draw(data, options);
-      chart.setSelection([{row: 38, column: 1}]);
-
-    }
-    */
+      });
+  
+      var control = new google.visualization.ControlWrapper({
+        controlType: 'ChartRangeFilter',
+        containerId: 'control_div',
+        options: {
+          filterColumnIndex: 0
+        }
+      });
+  
+      var table = new google.visualization.ChartWrapper({
+        chartType: 'Table',
+        containerId: 'table_div',
+        dataTable: dataOther,
+        options: {
+          sortColumn: 1
+        }
+      });
+  
+      google.visualization.events.addListener(control, 'statechange', function () {
+        var state = control.getState();
+        var view = new google.visualization.DataView(dataOther);
+        view.setRows(view.getFilteredRows([{column: 0, minValue: state.range.start, maxValue: state.range.end}]));
+        table.setDataTable(view);
+        table.draw();
+      });
+  
+      var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard_div'));
+      dashboard.bind([control], [chart]);
+      dashboard.draw(data);
+      table.draw();
+    },
+    packages: ['controls', 'corechart', 'table']
+  });
+  

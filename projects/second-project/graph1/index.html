@@ -1,123 +1,83 @@
+<!DOCTYPE HTML>
 <html>
+
 <head>
-    <div class="container"> 
-        <!-- Relative URLs -->
-        <a href="../index.html">Project 2</a>
-        <a href="../graph1/index.html">Graph 1</a>
-        <a href="../graph2/index.html">Graph 2</a>
-        <a href="../graph3/index.html">Graph 3</a>
-        <a href="../graph4/index.html">Graph 4</a>
-        <a href="../graph5/index.html">Graph 5</a>
-        <a href="../graph6/index.html">Graph 6</a>
-        <a href="../graph7/index.html">Graph 7</a>
-        <a href="../graph8/index.html">Graph 8</a>
-        <a href="../graph9/index.html">Graph 9</a>
-        <a href="../graph10/index.html">Graph 10</a>
-        <a href="../graph11/index.html">Graph 11</a>
-        <a href="../graph12/index.html">Graph 12</a>
-        <a href="../graph13/index.html">Graph 13</a>
-        <a href="../graph14/index.html">Graph 14</a>
-        <a href="../graph15/index.html">Graph 15</a>
-        <a href="../graph16/index.html">Graph 16</a>
-        <a href="../graph17/index.html">Graph 17</a>
-        <a href="../graph18/index.html">Graph 18</a>
-        <a href="../graph19/index.html">Graph 19</a>
-        <a href="../graph20/index.html">Graph 20</a>
-
-  <style>html{font-family:Verdana;}</style>
+        <div class="container"> 
+                <!-- Relative URLs -->
+                <a href="../index.html">Project 2</a>
+                <a href="../graph1/index.html">Graph 1</a>
+                <a href="../graph2/index.html">Graph 2</a>
+                <a href="../graph3/index.html">Graph 3</a>
+                <a href="../graph4/index.html">Graph 4</a>
+                <a href="../graph5/index.html">Graph 5</a>
+                <a href="../graph6/index.html">Graph 6</a>
+                <a href="../graph7/index.html">Graph 7</a>
+                <a href="../graph8/index.html">Graph 8</a>
+                <a href="../graph9/index.html">Graph 9</a>
+                <a href="../graph10/index.html">Graph 10</a>
+                <a href="../graph11/index.html">Graph 11</a>
+                <a href="../graph12/index.html">Graph 12</a>
+                <a href="../graph13/index.html">Graph 13</a>
+                <a href="../graph14/index.html">Graph 14</a>
+                <a href="../graph15/index.html">Graph 15</a>
+                <a href="../graph16/index.html">Graph 16</a>
+                <a href="../graph17/index.html">Graph 17</a>
+                <a href="../graph18/index.html">Graph 18</a>
+                <a href="../graph19/index.html">Graph 19</a>
+                <a href="../graph20/index.html">Graph 20</a>
 
 
-	
-<script type="text/javascript">
+<script>
 
-var canvas ;
-var context ;
-var Val_max;
-var Val_min;
-var sections;
-var xScale;
-var yScale;
-		// Values for the Data Plot, they can also be obtained from a external file
-var Apple =  [100, 102, 87, , 100, 123, 100, 90, 87, 91, 93, 88];
-var Samsung = [30, 50, 70, 80, 90, 100, 95, 91, 85, 92, 99, 130];
-var Nokia =   [20, -10, -20, -25, -40, 5, 10, 28, 30, 43, 65, 80];
+window.onload = function () {
 
-function init() {
-		// set these values for your data 
-	sections = 12;
-	Val_max = 130;
-	Val_min = -40;
-	var stepSize = 10;
-	var columnSize = 50;
-	var rowSize = 50;
-	var margin = 10;
-	var xAxis = [" ", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] 
-		//
-		
-	canvas = document.getElementById("canvas");
-	context = canvas.getContext("2d");
-	context.fillStyle = "#0099ff"
-	context.font = "20 pt Verdana"
-	
-	yScale = (canvas.height - columnSize - margin) / (Val_max - Val_min);
-	xScale = (canvas.width - rowSize) / sections;
-	
-	context.strokeStyle="#009933"; // color of grid lines
-	context.beginPath();
-		// print Parameters on X axis, and grid lines on the graph
-	for (i=1;i<=sections;i++) {
-		var x = i * xScale;
-		context.fillText(xAxis[i], x,columnSize - margin);
-		context.moveTo(x, columnSize);
-		context.lineTo(x, canvas.height - margin);
+var dps = []; // dataPoints    https://canvasjs.com/html5-javascript-dynamic-chart/
+var chart = new CanvasJS.Chart("chartContainer", {
+	title :{
+		text: "USD SDR FX differential random"
+	},
+	axisY: {
+		includeZero: false
+	},
+	data: [{
+		type: "line",
+		dataPoints: dps
+	}]
+});
+
+var xVal = 0;
+var yVal = 100;
+var updateInterval = 1000;
+var dataLength = 20; // number of dataPoints visible at any point
+
+var updateChart = function (count) {
+
+	count = count || 1;
+
+	for (var j = 0; j < count; j++) {
+		yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+		dps.push({
+			x: xVal,
+			y: yVal
+		});
+		xVal++;
 	}
-		// print row header and draw horizontal grid lines
-	var count =  0;
-	for (scale=Val_max;scale>=Val_min;scale = scale - stepSize) {
-		var y = columnSize + (yScale * count * stepSize); 
-		context.fillText(scale, margin,y + margin);
-		context.moveTo(rowSize,y)
-		context.lineTo(canvas.width,y)
-		count++;
+
+	if (dps.length > dataLength) {
+		dps.shift();
 	}
-	context.stroke();
-	
-	context.translate(rowSize,canvas.height + Val_min * yScale);
-	context.scale(1,-1 * yScale);
-	
-		// Color of each dataplot items
-		
-	context.strokeStyle="#FF0066";
-	plotData(Apple);
-	context.strokeStyle="#9933FF";
-	plotData(Samsung);
-	context.strokeStyle="#000";
-	plotData(Nokia);
+
+	chart.render();
+};
+
+updateChart(dataLength);
+setInterval(function(){updateChart()}, updateInterval);
+
 }
-
-function plotData(dataSet) {
-	context.beginPath();
-	context.moveTo(0, dataSet[0]);
-	for (i=1;i<sections;i++) {
-		context.lineTo(i * xScale, dataSet[i]);
-	}
-	context.stroke();
-}
-
 </script>
 </head>
-
-<body onLoad="init()">
-<div align="center">
-<h2>Monthly Profits of Companies(in million $)</h2>
-
-<canvas id="canvas" height="400" width="650">
-</canvas>
-<br>
-	<!--Legends for Dataplot -->
-<span style="color:#FF0066"> Apple </span>  
-<span style="color:#9933FF"> Samsung</span>  
-<span style="color:#000"> Nokia </span>
-</div>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>

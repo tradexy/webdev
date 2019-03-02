@@ -1,71 +1,42 @@
-<html>
-  <head>
-      <div class="container"> 
-          <!-- Relative URLs -->
-          <a href="../index.html">Project 2</a>
-          <a href="../graph1/index.html">Graph 1</a>
-          <a href="../graph2/index.html">Graph 2</a>
-          <a href="../graph3/index.html">Graph 3</a>
-          <a href="../graph4/index.html">Graph 4</a>
-          <a href="../graph5/index.html">Graph 5</a>
-          <a href="../graph6/index.html">Graph 6</a>
-          <a href="../graph7/index.html">Graph 7</a>
-          <a href="../graph8/index.html">Graph 8</a>
-          <a href="../graph9/index.html">Graph 9</a>
-          <a href="../graph10/index.html">Graph 10</a>
-          <a href="../graph11/index.html">Graph 11</a>
-          <a href="../graph12/index.html">Graph 12</a>
-          <a href="../graph13/index.html">Graph 13</a>
-          <a href="../graph14/index.html">Graph 14</a>
-          <a href="../graph15/index.html">Graph 15</a>
-          <a href="../graph16/index.html">Graph 16</a>
-          <a href="../graph17/index.html">Graph 17</a>
-          <a href="../graph18/index.html">Graph 18</a>
-          <a href="../graph19/index.html">Graph 19</a>
-          <a href="../graph20/index.html">Graph 20</a>
+<!DOCTYPE html>
+<head>
+
+    <title>Google chart</title>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-   <script type="text/javascript">
-      google.charts.load('current', {'packages':['gauge']});
-      google.charts.setOnLoadCallback(drawChart);
+</head>
+<body>
+        <div class="container"> 
+                <!-- Relative URLs -->
+                <a href="../index.html">Project 2</a>
+                <a href="../graph1/index.html">Graph 1</a>
+                <a href="../graph2/index.html">Graph 2</a>
+                <a href="../graph3/index.html">Graph 3</a>
+                <a href="../graph4/index.html">Graph 4</a>
+                <a href="../graph5/index.html">Graph 5</a>
+                <a href="../graph6/index.html">Graph 6</a>
+                <a href="../graph7/index.html">Graph 7</a>
+                <a href="../graph8/index.html">Graph 8</a>
+                <a href="../graph9/index.html">Graph 9</a>
+                <a href="../graph10/index.html">Graph 10</a>
+                <a href="../graph11/index.html">Graph 11</a>
+                <a href="../graph12/index.html">Graph 12</a>
+                <a href="../graph13/index.html">Graph 13</a>
+                <a href="../graph14/index.html">Graph 14</a>
+                <a href="../graph15/index.html">Graph 15</a>
+                <a href="../graph16/index.html">Graph 16</a>
+                <a href="../graph17/index.html">Graph 17</a>
+                <a href="../graph18/index.html">Graph 18</a>
+                <a href="../graph19/index.html">Graph 19</a>
+                <a href="../graph20/index.html">Graph 20</a>
+                               
+<h2>iSDR Weight Comparison - Column Chart</h2>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <div id="chart_div"></div>
+    <script  src="js/index.js"></script>  
 
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['Memory', 10],
-          ['CPU', 55],
-          ['Network', 68]
-        ]);
-
-        var options = {
-          width: 800, height: 240,
-          redFrom: 90, redTo: 100,
-          yellowFrom:75, yellowTo: 90,
-          minorTicks: 5
-        };
-
-        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-
-        chart.draw(data, options);
-
-        setInterval(function() {
-          data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
-          chart.draw(data, options);
-        }, 13000);
-        setInterval(function() {
-          data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
-          chart.draw(data, options);
-        }, 5000);
-        setInterval(function() {
-          data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
-          chart.draw(data, options);
-        }, 26000);
-      }
-    </script>
-  </head>
-  <body>
-    <div id="chart_div" style="width: 400px; height: 120px;"></div>
-  </body>
+ 
+</body>
 </html>

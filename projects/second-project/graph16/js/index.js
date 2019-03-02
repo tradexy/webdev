@@ -1,19 +1,20 @@
-      google.charts.load('current', {'packages':['table']});
-      google.charts.setOnLoadCallback(drawTable);
+google.charts.load('current', {'packages':['corechart', 'controls']});
+google.charts.setOnLoadCallback(initialize);
 
-      function drawTable() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Name');
-        data.addColumn('number', 'Salary');
-        data.addColumn('boolean', 'Full Time Employee');
-        data.addRows([
-          ['Mike',  {v: 10000, f: '$10,000'}, true],
-          ['Jim',   {v:8000,   f: '$8,000'},  false],
-          ['Alice', {v: 12500, f: '$12,500'}, true],
-          ['Bob',   {v: 7000,  f: '$7,000'},  true]
-        ]);
 
-        var table = new google.visualization.Table(document.getElementById('table_div'));
+function initialize() {
+  var queryString = encodeURIComponent('SELECT A, B, C LIMIT 5 OFFSET 1');
+  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1wx9d-9z9R4IS3CwQ-lNDTCTuhHsVSuwz4SNp1J0v4YQ/gviz/tq?sheet=Weight&headers=1&tq=' + queryString);
+  query.send(drawDashboard);
+}
+function drawDashboard(response) {
+  if (response.isError()) {
+    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+    return;
+  }
+  var data = response.getDataTable();
+  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  chart.draw(data, { height: 400 });
 
-        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
-      }
+ 
+}

@@ -5,8 +5,8 @@ google.charts.setOnLoadCallback(initialize);
 
 
 function initialize() {
-  var queryString = encodeURIComponent('SELECT B, C, O LIMIT 13 OFFSET 13');
-  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1wx9d-9z9R4IS3CwQ-lNDTCTuhHsVSuwz4SNp1J0v4YQ/gviz/tq?sheet=ASDRiNAV&headers=1&tq=' + queryString);
+  var queryString = encodeURIComponent('SELECT B, C LIMIT 8929 OFFSET 1');
+  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1wx9d-9z9R4IS3CwQ-lNDTCTuhHsVSuwz4SNp1J0v4YQ/gviz/tq?sheet=SDRiNAV&headers=1&tq=' + queryString);
   query.send(drawDashboard);
 }
 function drawDashboard(response) {
@@ -15,7 +15,7 @@ function drawDashboard(response) {
     return;
   }
   var data = response.getDataTable();
-  var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
   chart.draw(data, { height: 400 });
 }
 

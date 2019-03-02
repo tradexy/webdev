@@ -1,22 +1,58 @@
-google.charts.load('current', {'packages':['corechart', 'controls']});
-google.charts.setOnLoadCallback(initialize);
 
 
-function initialize() {
-  var queryString = encodeURIComponent('SELECT A, H, O, Q, R, U LIMIT 5 OFFSET 8');
-  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1kYwBfiLspqpwoupSdJoXoUV9tsNtBfStqNiCsrFQ0Gc/gviz/tq?sheet=Sheet1&headers=1&tq=' + queryString);
-  query.send(drawDashboard);
-}
-function drawDashboard(response) {
-  if (response.isError()) {
-    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-    return;
+  // Load the Visualization API and the controls package.
+  google.charts.load('current', {'packages':['corechart', 'controls']});
+
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.charts.setOnLoadCallback(drawDashboard);
+
+  // Callback that creates and populates a data table,
+  // instantiates a dashboard, a range slider and a pie chart,
+  // passes in the data and draws it.
+  function drawDashboard() {
+
+    // Create our data table.
+    var data = google.visualization.arrayToDataTable([
+      ['Name', 'Cells Destruction'],
+      ['John' , 65],
+      ['Maria', 55],
+      ['Eveliina', 35],
+      ['Kaspian', 30],
+      ['Alarik', 27],
+      ['Lilia', 25],
+      ['Besa', 8]
+    ]);
+
+    // Create a dashboard.
+    var dashboard = new google.visualization.Dashboard(
+        document.getElementById('dashboard_div'));
+
+    // Create a range slider, passing some options
+    var donutRangeSlider = new google.visualization.ControlWrapper({
+      'controlType': 'NumberRangeFilter',
+      'containerId': 'filter_div',
+      'options': {
+        'filterColumnLabel': 'Cells Destruction'
+      }
+    });
+
+    // Create a pie chart, passing some options
+    var pieChart = new google.visualization.ChartWrapper({
+      'chartType': 'PieChart',
+      'containerId': 'chart_div',
+      'options': {
+        'width': 600,
+        'height': 600,
+        'pieSliceText': 'value',
+        'legend': 'right'
+      }
+    });
+
+    // Establish dependencies, declaring that 'filter' drives 'pieChart',
+    // so that the pie chart will only display entries that are let through
+    // given the chosen slider range.
+    dashboard.bind(donutRangeSlider, pieChart);
+
+    // Draw the dashboard.
+    dashboard.draw(data);
   }
-  var data = response.getDataTable();
-  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-  chart.draw(data, { height: 400 });
-
-  // below event listener to dynamically re-size as screen size changes
-window.addEventListener('resize', initialize, false);
-}
-

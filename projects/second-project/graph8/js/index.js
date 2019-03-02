@@ -1,23 +1,54 @@
 google.charts.load('current', {'packages':['corechart', 'controls']});
-google.charts.setOnLoadCallback(initialize);
+google.charts.setOnLoadCallback(drawStuff);
 
+function drawStuff() {
 
+  var dashboard = new google.visualization.Dashboard(
+    document.getElementById('programmatic_dashboard_div'));
 
-function initialize() {
-  var queryString = encodeURIComponent('SELECT A, D, E LIMIT 5 OFFSET 3');
-  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/13ZsStulUaX5FNxflxa0lOwiTa0wcztKp3TT0avaJQTs/gviz/tq?sheet=Sheet1&headers=1&tq=' + queryString);
-  query.send(drawDashboard);
+  // We omit "var" so that programmaticSlider is visible to changeRange.
+  var programmaticSlider = new google.visualization.ControlWrapper({
+    'controlType': 'NumberRangeFilter',
+    'containerId': 'programmatic_control_div',
+    'options': {
+      'filterColumnLabel': 'Donuts eaten',
+      'ui': {'labelStacking': 'vertical'}
+    }
+  });
+
+  var programmaticChart  = new google.visualization.ChartWrapper({
+    'chartType': 'PieChart',
+    'containerId': 'programmatic_chart_div',
+    'options': {
+      'width': 300,
+      'height': 300,
+      'legend': 'none',
+      'chartArea': {'left': 15, 'top': 15, 'right': 0, 'bottom': 0},
+      'pieSliceText': 'value'
+    }
+  });
+
+  var data = google.visualization.arrayToDataTable([
+    ['Name', 'Donuts eaten'],
+    ['Michael' , 5],
+    ['Elisa', 7],
+    ['Robert', 3],
+    ['John', 2],
+    ['Jessica', 6],
+    ['Aaron', 1],
+    ['Margareth', 8]
+  ]);
+
+  dashboard.bind(programmaticSlider, programmaticChart);
+  dashboard.draw(data);
+
+  changeRange = function() {
+    programmaticSlider.setState({'lowValue': 2, 'highValue': 5});
+    programmaticSlider.draw();
+  };
+
+  changeOptions = function() {
+    programmaticChart.setOption('is3D', true);
+    programmaticChart.draw();
+  };
 }
-function drawDashboard(response) {
-  if (response.isError()) {
-    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-    return;
-  }
-  var data = response.getDataTable();
-  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-  chart.draw(data, { height: 400 });
-
-    // below event listener to dynamically re-size as screen size changes
-window.addEventListener('resize', initialize, false);
-}
-
