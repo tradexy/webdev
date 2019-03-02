@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en" >
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/main.css">
+  <meta charset="UTF-8">
+  <title>Toggle series visibility in a Google Chart</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
+  
+      <link rel="stylesheet" href="css/style.css">
 
-  <title>Graph 2</title>
+  
 </head>
 
 <body>
-
     <div class="container"> 
         <!-- Relative URLs -->
         <a href="../index.html">Project 2</a>
@@ -38,54 +38,16 @@
         <a href="../graph19/index.html">Graph 19</a>
         <a href="../graph20/index.html">Graph 20</a>
 
+        <p>With event listener to dynamically re-size as screen size changes</p>
+        <p>Shows the highlighted range, but graph can be replaced</p>
+  <div id="chart"></div>
+
+   <!--used with below event listener to dynamically re-size as screen size changes-->
+  <script src='https://www.google.com/jsapi'></script>
+
+    <script  src="js/index.js"></script>
 
 
-
-  
-    <h2>Charts and text (from chart) displayed on page</h2>
-    <hr>
-    <p>This page put together on 18th May 2018 (asam), taking charts & text (chart) from Google sheets.</p>
- 
-    </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=1039124072&amp;format=interactive" style="border:none"; width = 900 height=400 ></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=277979861&amp;format=interactive" style="border:none"; width = 900 height=250 ></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=1381269439&amp;format=interactive" style="border:none"; width = 900 height=400 ></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=471367827&amp;format=interactive" style="border:none"; width = 900 height = 200></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=1355520048&amp;format=interactive" style="border:none"; width = 900 height=400 ></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=1220221102&amp;format=interactive" style="border:none"; width = 900 height = 200></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=921252730&amp;format=interactive" style="border:none"; width = 900 height = 200></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=2119415789&amp;format=interactive" style="border:none"; width = 900 height = 200></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=215596894&amp;format=interactive" style="border:none"; width = 900 height = 200></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=1539324994&amp;format=interactive" style="border:none"; width = 900 height=400 ></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=644430274&amp;format=interactive" style="border:none"; width = 900 height = 200></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=1222163164&amp;format=interactive" style="border:none"; width = 900 height = 200></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=1569879527&amp;format=interactive" style="border:none"; width = 900 height = 200></iframe>
-    <p> </p>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSE8KEYntiath6n6GCNLlF-BHl7BEpCx2u56zpMmgVSEnFIa2e0o81AgFzmspD6PUAWxj1N6hQu1xGa/pubchart?oid=1209193773&amp;format=interactive" style="border:none"; width = 900 height = 200></iframe>
-
-    
-
-
-
-
-
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 
 </html>

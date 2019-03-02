@@ -1,53 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
+
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <p>test</p>
+  <meta charset="UTF-8">
+  <title>MyWeb</title>
+  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
 </head>
 
 <body>
-    <div id="chart" style="width:700px; height:300px;"></div> 
+
+  
+<body style="background-color:#558CFF;">
+  
+  <style>
+    background-color: #558CFF;
+    
+  </style>
+  
+
+  
+  <div class="text-focus-in">
+    
+    
+   
+    
+    
+    <nav class="nav">
+  <ul class="nav-bar">
+    <li class="nav-item"><a href="" class="nav-link">Home</a></li>
+    <li class="nav-item"><a href="" class="nav-link">Developers</a></li>
+    <li class="nav-item"><a href="" class="nav-link">Upgrades</a></li>
+  </ul>
+</nav>
+    
+    <h1 style = "font-size:200px; text-align:center; color:blue;"><strong>MyWeb</strong></h1>
+<p style = "text-align:center; color:grey;font-size:20px;">The best <strike>1$</strike> <u>Free</u> site to make a stylish website <br><br>Click Here To Continue<br><span class="	glyphicon glyphicon-arrow-down"></span>
+  <br>
+    <button type="button" class="btn btn-primary">Start Creating!</button>
+  
+  
+
+    <p>
+
+      
+        
+        
+        
+         </div>
+  
+  
+
 </body>
 
-<script>
-    // Visualization API with the 'corechart' package.
-    google.charts.load('visualization', { packages: ['corechart'] });
-    google.charts.setOnLoadCallback(drawLineChart);
-
-    function drawLineChart() {
-        $.ajax({
-            url: "https://raw.githubusercontent.com/tradexy/api/master/sample-sales.json",
-            //url: "sample-sales.json",
-            dataType: "json",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                var arrSales = [['Month', 'Sales Figure', 'Perc. (%)']];    // Define an array and assign columns for the chart.
-
-                // Loop through each data and populate the array.
-                $.each(data, function (index, value) {
-                    arrSales.push([value.Month, value.Sales_Figure, value.Perc]);
-                });
-
-                // Set chart Options.
-                var options = {
-                    title: 'Monthly Sales',
-                    curveType: 'function',
-                    legend: { position: 'bottom', textStyle: { color: '#555', fontSize: 14} }  // You can position the legend on 'top' or at the 'bottom'.
-                };
-
-                // Create DataTable and add the array to it.
-                var figures = google.visualization.arrayToDataTable(arrSales)
-
-                // Define the chart type (LineChart) and the container (a DIV in our case).
-                var chart = new google.visualization.LineChart(document.getElementById('chart'));
-                chart.draw(figures, options);      // Draw the chart with Options.
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('Got an Error');
-            }
-        });
-    }
-</script>
 </html>
