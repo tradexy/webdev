@@ -55,20 +55,99 @@
 
 
 
-    <h1 class="title">Third Project</h1>
-    <p>February 18, 2019</p>
+      <h1 class="title">Third Project</h1>
+      <p>March 8, 2019</p>
+  
+  
+      <hr>
+  
+      <h2>Graphs</h2>
+      <p>We continue from Project 2 covering graphs with data within JS code, JSON saved on disk file and online. 
+        <br>Graph (1): Bar chart - sideways. With Google Sheet as HTML . HAVE NOT BEEN ABLE TO USE OWN SHEET.
+        <pre>
+          var SHEET = {}; var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/.../pubhtml';
+      SHEET.load = function (data, tabletop) {var arrayOfData = [];
+      data.forEach(function (item) {var attendance = parseInt(item.Attendance, 10) * 1000;
+        arrayOfData.push([item.City, attendance]);});
+      // Sort cities by name
+        var sortArrayOfData = arrayOfData.sort();
+      // Load the data into Google Charts
+      CHART.load(sortArrayOfData);};SHEET.init = function (url) {Tabletop.init({
+      key: url,callback: SHEET.load,simpleSheet: true });};
+      window.addEventListener('DOMContentLoaded', SHEET.init(publicSpreadsheetUrl));
+      </pre>
 
 
-    <hr>
 
-    <p>This is my third Project.</p>
-    <h2>Graphs</h2>
-    <p>We continue covering graphs, Google charts with JSON API.</p>
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-</body>
+        <br>Graph (2)[1]: Fusion chart - Data feed from my Googlesheet. Consider removing.
+        <pre> $.get({url: url,success: function(response) {var data = response.feed.entry,
+              len = data.length,i = 0,parsedData = [];
+              for (i = 0; i < len; i++) {parsedData.push({label: data[i].title.$t,
+              value: data[i].content.$t.replace('income: ', '')});}new FusionCharts({...
+      </pre>
+        Graph (3)[2]: Fusion chart, same as previous. Some styling difference. Consider removing.
+        <br>Graph (4): Same as (2)[1] TO REPLACE NOW.
 
-</html>
+          <br>Graph (5): Same as graph in project 2. REMOVE NOW.
+          <br>Graph (6): Line chart, with online JSON data as provideed by operational company. TO DO MORE OF THESE.
+          <pre>function drawChart() {
+            // Go and get the data from OpenDataCommunities
+            $.ajax({method: 'POST',dataType: 'json',url: url,data: {query: odc_query},
+            success: function(data) {var bindings = data.results.bindings
+            // Create the data table.
+            var data = new google.visualization.DataTable();data.addColumn('string', 'Year');data.addColumn('number', 'England');
+          </pre>
+        Graph (7): Old style? Google charts. Line chart. Using data saved on disk. TO ADD INTERNET DATA.
+        <pre>
+          function drawLineChart() {$.ajax({url: "sample-sales.json",dataType: "json",type: "GET",
+            contentType: "application/json; charset=utf-8",success: function (data) {
+            var arrSales = [['Month', 'Sales Figure', 'Perc. (%)']];    // Define an array and assign columns for the chart.
+          // Loop through each data and populate the array.
+            $.each(data, function (index, value) {arrSales.push([value.Month, value.Sales_Figure, value.Perc]);});
+        </pre>
+        Graph (8): Same as 7, slightly different coding. New style Google? TO COMPARE TO OLD STYLE AND ADD DATA FROM WEB.
+     
+        
+        <br><br><br>Graph (9): Remove NOW -SAME AS PROJECT 2.   9 10 11 12 13 14 15 16 17 18 19 20
+              <br>Graph (10): Same as graph 4 just more values. TO ADD SAVED AND EXTERNAL DATA.
+          <br>Graph (11): iframes of live cryto market values. 
+          <br>Charts generated in Google sheets and added as iframes - by asam at start of 2018.
+        <br>Graph (12): iframes of live FX and our SDR market valuations. 
+          <br>Charts generated in Google sheets and added as iframes.
+          <br>Graph (13): Similar to Graph 14, 5i&2x
+          <br> https://docs.google.com/spreadsheets/d/13ZsSt
+          <br>ulUaX5FNxflxa0lOwiTa0wcztKp3TT0avaJQTs/gviz/tq?sheet=Sheet1&headers=1&tq=
+          <br>With event listener to dynamically re-size as screen size changes
+          <br>window.addEventListener('resize', initialize, false);
+          <br>Graph (14): Live data from Google Sheets - bar chart, 5i&5x
+          <pre>google.charts.load('current', {'packages':['corechart', 'controls']});
+            google.charts.setOnLoadCallback(initialize);
+            function initialize() {var queryString = encodeURIComponent('SELECT A, H, O, Q, R, U LIMIT 5 OFFSET 8');
+              var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1kY
+              wBfiLspqpwoupSdJoXoUV9tsNtBfStqNiCsrFQ0Gc/gviz/tq?sheet=Sheet1&headers=1&tq=' + queryString);
+              query.send(drawDashboard);}
+            function drawDashboard(response) {if (response.isError()) {
+                alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+                return;}
+              var data = response.getDataTable();
+              var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+              chart.draw(data, { height: 400 });</pre>
+              <br>Graph (15): Live data pie chart - similar to 16. CHANGE THESE AROUND.
+              <br>Graph (16): Prod ready. Same data as 17. As pie chart. 17 may work best for weights data comparison.
+              <br>Graph (17): Prod ready. As graphs 12, 13 and 14. Bar chart. Data of SDR weights 1st Oct 16 vs now.
+              <br>Graph (18): GOOD - Production ready. Similar to 7 and 8 but as line chart. 1hr SDR price, 5mins.
+          <br> EVENT LISTENER ON OR OFF - CHECK ON PHONE vs Graph 10 (with off)
+          <br>Graph (19): Same as 9, including data and with added random points/line. (no resize event listener)
+          <br>Graph (20): Prod ready. Line chart. After 9 as similar, showing 1 month SDR data.
+              
+   
+    </p>
+    </div>
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  </body>
+  
+  </html>
