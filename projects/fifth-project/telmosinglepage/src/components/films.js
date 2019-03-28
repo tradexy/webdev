@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {FilmsList} from '../data/films';
 
 const Films = (props) => {
