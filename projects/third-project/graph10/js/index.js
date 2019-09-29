@@ -6,7 +6,7 @@ google.charts.setOnLoadCallback(initialize);
 
 function initialize() {
   var queryString = encodeURIComponent('SELECT B, C, O LIMIT 13 OFFSET 13');
-  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1wx9d-9z9R4IS3CwQ-lNDTCTuhHsVSuwz4SNp1J0v4YQ/gviz/tq?sheet=ASDRiNAV&headers=1&tq=' + queryString);
+  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1jJlOPmY-e22UZnmPe7Fqt99Fi0WLk2kO3sPXMhRyCSU/gviz/tq?sheet=ASDRiNAV&headers=1&tq=' + queryString);
   query.send(drawDashboard);
 }
 function drawDashboard(response) {

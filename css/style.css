@@ -1,0 +1,29 @@
+html, body{
+  background-color: #fff;
+}
+.wrapper{
+  width:100%;
+  padding-top: 20px;
+  text-align:center;
+  color: blue;
+}
+h2{
+  font-family:sans-serif;
+  color:whitesmoke;
+}
+.carousel{
+  width:90%;
+  margin:0px auto;
+}
+.slick-slide{
+  margin:10px;
+}
+.slick-slide img{
+  width:100%;
+  border: 2px solid #fff;
+}
+
+.slick-prev:before, .slick-next:before { 
+  color:red !important;
+}
+

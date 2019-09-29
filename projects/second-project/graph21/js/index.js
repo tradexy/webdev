@@ -3,12 +3,21 @@ google.charts.load('current', {'packages':['corechart', 'controls']});
 google.charts.setOnLoadCallback(initialize);
 
 
-
 function initialize() {
-  var queryString = encodeURIComponent('SELECT B, C LIMIT 13 OFFSET 13');
-  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1jJlOPmY-e22UZnmPe7Fqt99Fi0WLk2kO3sPXMhRyCSU/gviz/tq?sheet=ASDRiNAV&headers=1&tq=' + queryString);
+  var queryString = encodeURIComponent('SELECT B, C LIMIT 8929 OFFSET 1');
+  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1jJlOPmY-e22UZnmPe7Fqt99Fi0WLk2kO3sPXMhRyCSU/gviz/tq?sheet=SDRiNAV&headers=1&tq=' + queryString);
   query.send(drawDashboard);
 }
+
+/*ADDED BY JOHN MDFGFG DFGDFGHHGHGHGHGHGHGHGHF*/
+var options = {
+  title: 'iSDR during the last 30 days',
+  legend: { position: 'bottom' },
+  vAxis: {gridlines: {count: 0}},
+ // hAxis: {gridlines: {count: 0}}
+}
+
+
 function drawDashboard(response) {
   if (response.isError()) {
     alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
@@ -16,11 +25,10 @@ function drawDashboard(response) {
   }
   var data = response.getDataTable();
   var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-  chart.draw(data, { height: 400 });
-
-      // below event listener to dynamically re-size as screen size changes
-      // ON OR OFF???       window.addEventListener('resize', initialize, false);
+  chart.draw(data, options);
 }
+
+
 
 
 /*

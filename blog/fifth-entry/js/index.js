@@ -1,6 +1,6 @@
 function Banner(){
 	
-  var keyword = "HI ANON";
+  var keyword = "Be good!";
 	var canvas;
 	var context;
 	

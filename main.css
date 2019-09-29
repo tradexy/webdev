@@ -7,3 +7,40 @@ h2 {
   color: #ffffff;
   padding: 5px;
 }
+
+
+
+html, body{
+  background-color: #ffffff
+}
+.wrapper{
+  width:100%;
+  padding-top: 20px;
+  text-align:center;
+}
+h2{
+  font-family:sans-serif;
+  color:#fff;
+}
+.carousel{
+  width:90%;
+  margin:0px auto;
+}
+.slick-slide{
+  margin:10px;
+}
+.slick-slide img{
+  width:100%;
+  border: 2px solid #fff;
+}
+
+
+/* ADDED BELOW TO ROTATE JPG IMAGE ON BLOG 3, 2ND JPG */
+.rotateimg180 {
+  -webkit-transform:rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
